@@ -174,57 +174,723 @@
       letter-spacing: 0.5px;
       padding: 0 16px 10px;
     }
-\\��\�N]\�\�X�[�Έ�\Y[�ΈM�LB����]Y�ܚY\�\�ܛ�\�^N��^�\�Y[�ΈM�M�ݙ\����^�]]��ܛ��\�]�Y��ۙNB���]Y�ܚY\�\�ܛ���]�X��]\�ܛ��\��\�^N��ۙN�B���]\[\�^N��^[YۋZ][\Έ�[�\��\�
-��X��ܛ�[���\�KX�\�
-N�ܙ\��\��Y�\�KX�ܙ\�N�ܙ\�\�Y]\Έ�Y[�Έ
-�M�۝\�^�N�L��]K\�X�N���ܘ\�\��܎��[�\��[��][ێ�[���B���]\[�X�]�H�X��ܛ�[���\�KXX��[�
-N�ܙ\�X��܎��\�KXX��[�
-N��܎��]NB���]\[�ݙ\����
-�X�]�JH��ܙ\�X��܎��\�KXX��[�
-N���܎��\�K]^
-N�B��ʈ�S��P�SӔ�
-���[��X�[ۜ�Y[�ΈM�B��Z][H\�^N��^[YۋZ][\Έ�[�\��\�L��X��ܛ�[���\�KX�\�
-N�ܙ\�\�Y]\ΈL�Y[�ΈMX\��[�X���N��ܙ\��\��Y�\�KX�ܙ\�N[�[X][ێ��YR[����X\�NB��^Y��[Y\��YR[����H��X�]N���[�ٛܛN��[��]VJN
-N�B����X�]N�N��[�ٛܛN��[��]VJ
-N�B�B��ZX�ۈ�Y�
-ZY��
-�ܙ\�\�Y]\ΈL�\�^N��^[YۋZ][\Έ�[�\��\�Y�KX�۝[���[�\��۝\�^�N���^\��[�ΈB��Z[�����^�N�Z[�]�Y��B��[�[YH�۝\�^�N�M�۝]�ZY��
-���܎��\�K]^
-N�]K\�X�N���ܘ\ݙ\���ΈY[�^[ݙ\���Έ[\�\�B��[Y]H�۝\�^�N�L\��܎��\�K[]]Y
-NX\��[�]���B��X[[�[��۝\�^�N�M\�۝]�ZY��
-��^\��[�ΈB��X[[�[�������܎��\�KYܙY[�N�B��X[[�[���Y����܎��\�K\�Y
-N�B��Y[]H�X��ܛ�[���ۙN�ܙ\���ۙN��܎��\�KX�ܙ\�N�\��܎��[�\��۝\�^�N�M�Y[�Έ
-�ܙ\�\�Y]\Έ
-��[��][ێ�[����^\��[�ΈB��Y[]N�ݙ\����܎��\�K\�Y
-N��X��ܛ�[���ؘJ��K
-�
-��JN�B���[\K\�]H^X[Yێ��[�\�Y[�Έ
-���܎��\�K[]]Y
-NB��[\KZX�ۈ��۝\�^�N�
-�X\��[�X���N�L��B��[\K]^��۝\�^�N�M�B��ʈ�P�
-���X���][ێ��^Y���N���Y��
-L	N�[�ٛܛN��[��]V
 
-L	JNX^]�Y�
-�Y��[�L	HH̜
-N�X��ܛ�[���\�KXX��[�
-N��܎��]N�ܙ\���ۙN�ܙ\�\�Y]\ΈM�Y[�ΈM��۝\�^�N�M\�۝]�ZY��
-��\��܎��[�\�\�^N��^[YۋZ][\Έ�[�\��\�Y�KX�۝[���[�\��\���\�Y�Έ��ؘJNKL��K�
-N�[��][ێ�[����Z[�^�LB���X��ݙ\���X��ܛ�[����
-�MN��[�ٛܛN��[��]V
+    .categories-scroll {
+      display: flex;
+      gap: 8px;
+      padding: 0 16px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .categories-scroll::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    .cat-pill:hover:not(.active) { border-color: var(--accent); color: var(--text); }
 
-L	JH�[��]VJL�
-N�B���X��X�]�H��[�ٛܛN��[��]V
+    /* TRANSACTIONS */
+    .transactions {
+      padding: 0 16px;
+    }
+    .tx-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .tx-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .tx-info { flex: 1; min-width: 0; }
+    .tx-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tx-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .tx-amount {
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .tx-amount.pos { color: var(--green); }
+    .tx-amount.neg { color: var(--red); }
+    .tx-delete {
+      background: none;
+      border: none;
+      color: var(--border);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .tx-delete:hover { color: var(--red); background: rgba(239,68,68,0.1); }
 
-L	JH�[��]VJ
-N�B��ʈS�S
-��ݙ\�^H\�^N��ۙN��][ێ��^Y[��]��X��ܛ�[���ؘJ��N�Z[�^��[YۋZ][\Έ�^Y[��\�Y�KX�۝[���[�\�B��ݙ\�^K��[��\�^N��^�B��[�[�X��ܛ�[���\�KX�\�
-N�ܙ\�\�Y]\Έ��Y[�Έ��͜�Y�L	NX^]�Y�
-[�[X][ێ��YU\���X\�NB��^Y��[Y\��YU\���H��[�ٛܛN��[��]VJL	JN�B����[�ٛܛN��[��]VJ
-N�B�B��[�[Z[�H�Y�
-ZY��
-�X��ܛ�[���\�KX�ܙ\�N�ܙ\�\�Y]\ΈN\X\��[��]]��B��[�[]]H�۝\�^�N�N�۝]�ZY��
-�X\��[�X���N��^X[Yێ��[�\�B��ʈTH���H
-��\K]���H\�^N�ܚYܚY][\]KX��[[�ΈY��Y���\�X\��[�X���N��B��\KX��Y[�ΈL��ܙ\�\�Y]\ΈL��ܙ\�����Y�\�KX�ܙ\�N�X��ܛ�[���ۙN��܎��\�K[]]Y
-N�۝\�^�N�M�۝]�ZY��
-��\��܎��[�\��[��][ێ�[���B��\KX���[���YK�X�]�H��X��ܛ�[���ؘJ�NMÓB��R��&�&FW"�6���#�f"���w&VV⓲6���#�f"���w&VV⓲Т�G�R�'F��W�V�6R�7F�fR�&6�w&�V�C�&v&�#3��c��c���R��&�&FW"�6���#�f"���&VB��6���#�f"���&VB��Р��d�$����f�&��w&�W��&v���&�GF�Ӣg��Т�f�&���&V���f��B�6��S�'���6���#�f"����WFVB���FW�B�G&�6f�&ӢWW&66S���WGFW"�76��s��W����&v���&�GF�Ӣ����F�7���&��6���Т�f�&�֖�WB��v�GF��S��&6�w&�V�C�f"���6&C"���&�&FW#��6�ƖBf"���&�&FW"���&�&FW"�&F�W3�'���FF��s�G�g���6���#�f"���FW�B���f��B�6��S�g����WFƖ�S����S��G&�6�F���&�&FW"�6���"�'3��Т�f�&�֖�WC�f�7W2�&�&FW"�6���#�f"���66V�B��Т�f�&�֖�WC���6V���FW"�6���#�f"����WFVB��Т6V�V7B�f�&�֖�WB�7W'6�#����FW#�Р��4DTt�%�u$�B���6B�w&�B��F�7���w&�C��w&�B�FV��FR�6��V��3�&WVB�B�g"���v������&v���&�GF�Ӣ#���Т�6B��F�����&6�w&�V�C�f"���6&C"���&�&FW#�'�6�ƖBf"���&�&FW"���&�&FW"�&F�W3�'���FF��s��g���FW�B�Ɩv�6V�FW#��7W'6�#����FW#��G&�6�F������'3��Т�6B��F����6V�V7FVB�&�&FW"�6���#�f"���66V�B��&6�w&�V�C�&v&����"�#C��R��Т�6B��F���֖6���f��B�6��S�#'���&v���&�GF�ӢG��Т�6B��F������R�f��B�6��S���6���#�f"����WFVB��Т�6B��F����6V�V7FVB�6B��F������R�6���#�f"���66V�B��Р��7V&֗B�'F���v�GF��S��&6�w&�V�C�f"���66V�B���6���#�v��FS��&�&FW#����S��&�&FW"�&F�W3�G���FF��s�g���f��B�6��S�g���f��B�vV�v�C�s��7W'6�#����FW#��G&�6�F������'3��Т�7V&֗B�'F㦆�fW"�&6�w&�V�C�3FcCfSS�Р��4�%B���6�'B�w&��FF��s�g�g���Т�6�'B�&'2��F�7���f�W���Ɩv�֗FV�3�f�W��V�C��v�g����V�v�C�����&6�w&�V�C�f"���6&B���&�&FW"�&F�W3�'���FF��s�'���&�&FW#��6�ƖBf"���&�&FW"���Т�&"�w&�W��f�W����F�7���f�W���f�W��F�&V7F���6��V�㰢Ɩv�֗FV�3�6V�FW#��v�7����V�v�C�S���W7F�g��6��FV�C�f�W��V�C��Т�&"��v�GF��S��&�&FW"�&F�W3�G�G���֖�ֆV�v�C�'���G&�6�F����V�v�B�W2V6S��Т�&"��6��R�&"�&6�w&�V�C�f"���w&VV⓲�6�G���s�Т�&"�W�V�6R�&"�&6�w&�V�C�f"���&VB���6�G���s�Т�&"��&V��f��B�6��S����6���#�f"����WFVB��Т��7G��S����VC��&�G�ࠣƆVFW#��F�b6�73�&�VFW"�F�#��7�6�73�&�F�F�R"�C�&F�F�R#�	�+G&6�W"w�FF�;7s��7���'WGF��6�73�&��r�F�vv�R"��6Ɩ6��'F�vv�T��r��"�C�&��t'F�#�T���'WGF�����F�c��F�b6�73�&���F���b#��'WGF��6�73�&���F��'F�"��6Ɩ6��&6��vT���F����#�(���'WGF����7�6�73�&���F���&V�"�C�&���F��&V�#���7���'WGF��6�73�&���F��'F�"��6Ɩ6��&6��vT���F���#�(���'WGF�����F�c����VFW#ࠣ�F�b6�73�&6&G2#��F�b6�73�&6&B���#��F�c��F�b6�73�&6&B��&V�"�C�&&��6T�&V�#�6�F��&��6S��F�c��F�b6�73�&6&B���V�B"�C�&&��6T��V�B#���X#��F�c���F�c��F�b6�73�&&��6R֖6��#�	�+3��F�c���F�c��F�b6�73�&6&B#��F�b6�73�&6&B��&V�"�C�&��6��T�&V�#�'��6��G���F�c��F�b6�73�'6����6&B���V�B��6��R"�C�&��6��T��V�B#���X#��F�c���F�c��F�b6�73�&6&B#��F�b6�73�&6&B��&V�"�C�&W�V�6T�&V�#�w�FF����F�c��F�b6�73�'6����6&B���V�BW�V�6R"�C�&W�V�6T��V�B#���X#��F�c���F�c��F�b6�73�&6&B#��F�b6�73�&6&B��&V�"�C�'G��&V�#�G&�6�6�S��F�c��F�b6�73�'6����6&B���V�B"�C�'G�6�V�B#���F�c���F�c���F�cࠣ�F�b6�73�'&�w&W72�w&"�C�'&�w&W75w&"7G��S�&F�7������R#��F�b6�73�'&�w&W72��&V�#��7��C�'&�w&W74�&V�#�w�FF��g2'��6��G���7���7��C�'&�w&W757B#�S��7����F�c��F�b6�73�'&�w&W72�&"#��F�b6�73�'&�w&W72�f���"�C�'&�w&W74f���"7G��S�'v�GF��R#���F�c���F�c���F�cࠣ�F�b6�73�&6�'B�w&"�C�&6�'Ew&"7G��S�&F�7������R#��F�b6�73�&6�'B�&'2"�C�&6�'D&'2#���F�c���F�cࠣ�F�b6�73�'6V7F����F�F�R"�C�&6FVv�&�W5F�F�R#�FVv�&�R�6FVv�&�W3��F�c��F�b6�73�&6FVv�&�W2�67&���"�C�&6FVv�'�f��FW"#���F�cࠣ�F�b6�73�'6V7F����F�F�R"�C�'G�F�F�R#��7FF�RG&�6�6�S��F�c��F�b6�73�'G&�67F���2"�C�'G�Ɨ7B#���F�cࠣ�'WGF��6�73�&f""��6Ɩ6��&�V���F�"�C�&f$'F�#��7�7G��S�&f��B�6��S�#�#���7���7��C�&f%FW�B#�F�F�G&�6�6�I���7����'WGF��ࠣ�����D�����F�b6�73�&�fW&��"�C�&�fW&��"��6Ɩ6��&6��6T��FWfV�B�#��F�b6�73�&��F�#��F�b6�73�&��F�ֆ�F�R#���F�c��F�b6�73�&��F��F�F�R"�C�&��F�F�F�R#���vG&�6�6���F�cࠢ�F�b6�73�'G�R�F�vv�R#��'WGF��6�73�'G�R�'F�W�V�6R7F�fR"�C�&'F�W�V�6R"��6Ɩ6��'6WEG�R�vW�V�6Rr�#�	�8��7��C�&W�V�6T'F�FW�B#�w�FFV���7����'WGF����'WGF��6�73�'G�R�'F���6��R"�C�&'F��6��R"��6Ɩ6��'6WEG�R�v��6��Rr�#�	�8��7��C�&��6��T'F�FW�B#�'��6�;6C��7����'WGF�����F�cࠢ�F�b6�73�&f�&��w&�W#���&V�6�73�&f�&���&V�"�C�&��V�D�&V�#�v�F��X"����&V��Ɩ�WB6�73�&f�&�֖�WB"G�S�&�V�&W""�C�&��V�D��WB"�6V���FW#�#�"7FW�#�"֖��#"����F�cࠢ�F�b6�73�&f�&��w&�W#���&V�6�73�&f�&���&V�"�C�&FW64�&V�#���3���&V��Ɩ�WB6�73�&f�&�֖�WB"G�S�'FW�B"�C�&FW64��WB"�6V���FW#�&��&�VG&���w���V����"����F�cࠢ�F�b6�73�&f�&��w&�W#���&V�6�73�&f�&���&V�"�C�&6D�&V�#�FVv�&����&V���F�b6�73�&6B�w&�B"�C�&6Dw&�B#���F�c���F�cࠢ�'WGF��6�73�'7V&֗B�'F�"��6Ɩ6��&FEG&�67F��ₒ"�C�'7V&֗D'F�#�)�2F�F���'WGF�����F�c���F�cࠣ�67&�C���)H)H)H5DDR)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H ��WB��r�w�s���WB7W'&V�D���F���WrFFR���vWD���F������WB7W'&V�E�V"��WrFFR���vWDgV�ŖV"�����WB6V�V7FVEG�R�vW�V�6Rs���WB6V�V7FVD6B�vf��Bs���WBf��FW$6B�v��s���6��7B4DTt�$�U2�����C�vf��Br��6��	��Br�ât�VG�V�Rr�V�tf��Br�����C�wG&�7�'Br��6��	���r�âuG&�7�'Br�V�uG&�7�'Br�����C�v���Rr��6��	��r�âtF��r�V�t���Rr�����C�v�V�F�r��6��	�(�r�âu�G&�v�Rr�V�t�V�F�r�����C�vgV�r��6��	���r�âu&��'�v�r�V�tgV�r�����C�v6��F�W2r��6��	�Rr�âuV'&�r�V�t6��F�W2r�����C�w6�'�r��6��	�+�r�âu&6r�V�u6�'�r�����C�v�F�W"r��6��	�:br�ât���Rr�V�t�F�W"r���Ӱ��6��7B���D�5����u7G�7�\XBr�t�WG�r�t�'�V2r�t�v�V6�\XBr�t��r�t7�W'v�V2r��tƗ�V2r�u6�W'�\XBr�uw'�W6�\XBr�u[�G��W&斲r�tƗ7F�Br�tw'VG��\XBuӰ�6��7B���D�5�T���t��V'�r�tfV''V'�r�t�&6�r�t&��r�t��r�t�V�Rr��t�Vǒr�tVwW7Br�u6WFV�&W"r�t�7F�&W"r�t��fV�&W"r�tFV6V�&W"uӰ������Bg&����6�7F�&vP��WBG&�67F���2��4���'6R���6�7F�&vR�vWD�FV҂wG�FFr���u��r������)H)H)H4dR)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���6fR������6�7F�&vR�6WD�FV҂wG�FFr��4���7G&��v�g��G&�67F���2����Р���)H)H)H��uTtR)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���F�vv�T��r������r���r���w�r�vV�r�w�s��F�7V�V�B�vWDV�V�V�D'��B�v��t'F�r��FW�D6��FV�B���r���w�r�tT�r�u�s��&V�FW$����Р�gV�7F���B���V��&WGW&���r���w�r���V�Р���)H)H)H���D��b)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���6��vT���F��F�"���7W'&V�D���F���F�#���b�7W'&V�D���F����7W'&V�D���F���7W'&V�E�V"���Т�b�7W'&V�D���F����7W'&V�D���F���7W'&V�E�V"�ӲТf��FW$6B�v��s��&V�FW$����Р�gV�7F���vWD���F��&V���6��7B����r���w�r����D�5�Ŷ7W'&V�D���F������D�5�T�7W'&V�D���F�Ӱ�&WGW&�G���G�7W'&V�E�V'���Р���)H)H)Hd��DU")H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���vWD���F�G�����&WGW&�G&�67F���2�f��FW"�G�����6��7BB��WrFFR�G��FFR���&WGW&�B�vWD���F������7W'&V�D���F�bbB�vWDgV�ŖV"�����7W'&V�E�V#��ғ��Р�gV�7F���vWDf��FW&VEG�����6��7B���F�G��vWD���F�G������b�f��FW$6B���v��r�&WGW&����F�G���&WGW&����F�G��f��FW"�G���G��6FVv�'����f��FW$6B���Р���)H)H)H��D�)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F����V���F���F�7V�V�B�vWDV�V�V�D'��B�v�fW&��r��6�74Ɨ7B�FB�v�V�r���&V�FW$��F���F�7V�V�B�vWDV�V�V�D'��B�v��V�D��WBr��f�7W2����Р�gV�7F���6��6T��FR����b�R�F&vWB���F�7V�V�B�vWDV�V�V�D'��B�v�fW&��r����F�7V�V�B�vWDV�V�V�D'��B�v�fW&��r��6�74Ɨ7B�&V��fR�v�V�r���ТР�gV�7F���6WEG�R�G�R���6V�V7FVEG�R�G�S��F�7V�V�B�vWDV�V�V�D'��B�v'F�W�V�6Rr��6�74Ɨ7B�F�vv�R�v7F�fRr�G�R���vW�V�6Rr���F�7V�V�B�vWDV�V�V�D'��B�v'F��6��Rr��6�74Ɨ7B�F�vv�R�v7F�fRr�G�R���v��6��Rr���&V�FW$6Dw&�B����Р�gV�7F���&V�FW$��F���F�7V�V�B�vWDV�V�V�D'��B�v��F�F�F�Rr��FW�D6��FV�B�B�t��vG&�6�6�r�t�WrG&�67F���r���F�7V�V�B�vWDV�V�V�D'��B�v��V�D�&V�r��FW�D6��FV�B�B�t�v�F��X"�r�t��V�B���r���F�7V�V�B�vWDV�V�V�D'��B�vFW64�&V�r��FW�D6��FV�B�B�t��2r�tFW67&�F���r���F�7V�V�B�vWDV�V�V�D'��B�v6D�&V�r��FW�D6��FV�B�B�t�FVv�&�r�t6FVv�'�r���F�7V�V�B�vWDV�V�V�D'��B�vW�V�6T'F�FW�Br��FW�D6��FV�B�B�uw�FFV�r�tW�V�6Rr���F�7V�V�B�vWDV�V�V�D'��B�v��6��T'F�FW�Br��FW�D6��FV�B�B�u'��6�;6Br�t��6��Rr���F�7V�V�B�vWDV�V�V�D'��B�w7V&֗D'F�r��FW�D6��FV�B�B�~)�2F�F�r�~)�2FBr���&V�FW$6Dw&�B����Р�gV�7F���&V�FW$6Dw&�B����6��7Bw&�B�F�7V�V�B�vWDV�V�V�D'��B�v6Dw&�Br���w&�B���W$�D���rs��4DTt�$�U2�f�$V6��6B����6��7BF�b�F�7V�V�B�7&VFTV�V�V�B�vF�br���F�b�6�74��R�v6B��F���r��6V�V7FVD6B���6B�B�r6V�V7FVBr�rr���F�b���W$�D����F�b6�73�&6B��F���֖6��#�G�6B�6�����F�c��F�b6�73�&6B��F������R#�G�B�6B���6B�V����F�c���F�b���6Ɩ6��������6V�V7FVD6B�6B�C��&V�FW$6Dw&�B����Ӱ�w&�B�V�D6���B�F�b���ғ��Р���)H)H)HDB)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���FEG&�67F��ₒ��6��7B��V�B�'6Tf��B�F�7V�V�B�vWDV�V�V�D'��B�v��V�D��WBr��f�VR���6��7BFW62�F�7V�V�B�vWDV�V�V�D'��B�vFW64��WBr��f�VR�G&�҂�����b���V�B����V�B�����F�7V�V�B�vWDV�V�V�D'��B�v��V�D��WBr��f�7W2����&WGW&㰢Р�6��7B6B�4DTt�$�U2�f��B�2��2�B���6V�V7FVD6B���G&�67F���2�V�6��gB����C�FFR���r����G�S�6V�V7FVEG�R����V�B��FW63�FW62��6E���u���6FVv�'��6V�V7FVD6B��FFS��WrFFR���F��4�7G&��r���ғ���6fR����F�7V�V�B�vWDV�V�V�D'��B�v�fW&��r��6�74Ɨ7B�&V��fR�v�V�r���F�7V�V�B�vWDV�V�V�D'��B�v��V�D��WBr��f�VR�rs��F�7V�V�B�vWDV�V�V�D'��B�vFW64��WBr��f�VR�rs��&V�FW$����Р���)H)H)HDT�UDR)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���FV�WFUG&�67F��↖B���G&�67F���2�G&�67F���2�f��FW"�G���G��B���B���6fR����&V�FW$����Р���)H)H)Hd�$�B)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���f�B����&WGW&���F���6�U7G&��r�w���r��֖��V�g&7F���F�v�G3�"�����V�g&7F���F�v�G3�"Ғ�r�X"s��Р�gV�7F���f�DFFR��6���6��7BB��WrFFR��6򓰢&WGW&�B�F���6�TFFU7G&��r���r���w�r�w���r�vV��t"r��F��v�V�W&�2r����F��w6��'Brғ��Р���)H)H)H$T�DU"��)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H �gV�7F���&V�FW$�������VFW �F�7V�V�B�vWDV�V�V�D'��B�vF�F�Rr��FW�D6��FV�B�B�	�+G&6�W"w�FF�;7rr�	�+W�V�6RG&6�W"r���F�7V�V�B�vWDV�V�V�D'��B�v���F��&V�r��FW�D6��FV�B�vWD���F��&V���F�7V�V�B�vWDV�V�V�D'��B�vf%FW�Br��FW�D6��FV�B�B�tF�F�G&�6�6�I�r�tFBG&�67F���r���F�7V�V�B�vWDV�V�V�D'��B�v6FVv�&�W5F�F�Rr��FW�D6��FV�B�B�t�FVv�&�Rr�t6FVv�&�W2r���F�7V�V�B�vWDV�V�V�D'��B�wG�F�F�Rr��FW�D6��FV�B�B�t�7FF�RG&�6�6�Rr�u&V6V�BG&�67F���2r���F�7V�V�B�vWDV�V�V�D'��B�v&��6T�&V�r��FW�D6��FV�B�B�u6�F�r�t&��6Rr���F�7V�V�B�vWDV�V�V�D'��B�v��6��T�&V�r��FW�D6��FV�B�B�u'��6��G�r�t��6��Rr���F�7V�V�B�vWDV�V�V�D'��B�vW�V�6T�&V�r��FW�D6��FV�B�B�uw�FF��r�tW�V�6W2r���F�7V�V�B�vWDV�V�V�D'��B�wG��&V�r��FW�D6��FV�B�B�uG&�6�6�Rr�uG&�67F���2r������F�F�0�6��7B���F�G��vWD���F�G�����6��7B��6��R����F�G��f��FW"�B��B�G�R���v��6��Rr��&VGV6R��2�B���2�B���V�B����6��7BW�V�6R����F�G��f��FW"�B��B�G�R���vW�V�6Rr��&VGV6R��2�B���2�B���V�B����6��7B&��6R���6��R�W�V�6S���F�7V�V�B�vWDV�V�V�D'��B�v&��6T��V�Br��FW�D6��FV�B�f�B�&��6R���F�7V�V�B�vWDV�V�V�D'��B�v&��6T��V�Br��7G��R�6���"�&��6R���r6V#Ff2r�r6f6VRs��F�7V�V�B�vWDV�V�V�D'��B�v��6��T��V�Br��FW�D6��FV�B�f�B���6��R���F�7V�V�B�vWDV�V�V�D'��B�vW�V�6T��V�Br��FW�D6��FV�B�f�B�W�V�6R���F�7V�V�B�vWDV�V�V�D'��B�wG�6�V�Br��FW�D6��FV�B����F�G���V�wF������&�w&W72& �6��7Br�F�7V�V�B�vWDV�V�V�D'��B�w&�w&W75w&r����b���6��R����r�7G��R�F�7���v&��6�s��6��7B7B��F��֖���F��&�V�B��W�V�6R���6��R������6��7Bf����F�7V�V�B�vWDV�V�V�D'��B�w&�w&W74f���r���f����7G��R�v�GF��7B�rRs��f����6�74��R�w&�w&W72�f���r��7B���rF�vW"r�7B�s�rv&��rr�rr���F�7V�V�B�vWDV�V�V�D'��B�w&�w&W74�&V�r��FW�D6��FV�B�B�uw�FF��g2'��6��G�r�tW�V�6W2g2��6��Rr���F�7V�V�B�vWDV�V�V�D'��B�w&�w&W757Br��FW�D6��FV�B�7B�rRs���V�6R��r�7G��R�F�7���v���Rs��Р���֖�6�'B��7Bb���F�2��&V�FW$6�'B�������6FVv�'�f��FW"���0�&V�FW$6FVv�'�f��FW"����F�G�������E�Ɨ7@�&V�FW%G�Ɨ7B����Р�gV�7F���&V�FW$6�'B����6��7Bw&�F�7V�V�B�vWDV�V�V�D'��B�v6�'Ew&r���6��7B�4��G&�67F���2��V�wF����w&�7G��R�F�7����4��v&��6�r�v���Rs���b��4璒&WGW&㰠�6��7B&'2�F�7V�V�B�vWDV�V�V�D'��B�v6�'D&'2r���&'2���W$�D���rs���6��7B���F�2��Ӱ�f�"��WB��S�������Ғ���WB��7W'&V�D���F������WB��7W'&V�E�V#��v���R��������#���ӲТ���F�2�W6������ғ��Р�6��7B��f�����F�2�&VGV6R���������Ғ����6��7BG�2�G&�67F���2�f��FW"�G�����6��7BB��WrFFR�G��FFR���&WGW&�B�vWD���F�������bbB�vWDgV�ŖV"��������ғ��6��7B��2�G�2�f��FW"�B��B�G�R���v��6��Rr��&VGV6R��2�B���2�B���V�B����6��7BW��G�2�f��FW"�B��B�G�R���vW�V�6Rr��&VGV6R��2�B���2�B���V�B����&WGW&��F����������2�W�������������F�2�f�$V6�������Ғ����6��7BG�2�G&�67F���2�f��FW"�G�����6��7BB��WrFFR�G��FFR���&WGW&�B�vWD���F�������bbB�vWDgV�ŖV"��������ғ��6��7B��2�G�2�f��FW"�B��B�G�R���v��6��Rr��&VGV6R��2�B���2�B���V�B����6��7BW��G�2�f��FW"�B��B�G�R���vW�V�6Rr��&VGV6R��2�B���2�B���V�B����6��7B��&V�2���r���w�r����D�5������D�5�T㰢6��7B�&V����&V�5����6Ɩ6R��2����6��7Bw&�W�F�7V�V�B�7&VFTV�V�V�B�vF�br���w&�W�6�74��R�v&"�w&�Ws��w&�W���W$�D��� ��F�b6�73�&&"��6��R�&""7G��S�&�V�v�C�G��F��&�V�B����2���f�S���#���F�c��F�b6�73�&&"W�V�6R�&""7G��S�&�V�v�C�G��F��&�V�B��W����f�S���#���F�c��F�b6�73�&&"��&V�#�G��&V����F�c���&'2�V�D6���B�w&�W���ғ��Р�gV�7F���&V�FW$6FVv�'�f��FW"����F�G����6��7B67&����F�7V�V�B�vWDV�V�V�D'��B�v6FVv�'�f��FW"r���67&������W$�D���rs���6��7B������F�7V�V�B�7&VFTV�V�V�B�vF�br���������6�74��R�v6B����r��f��FW$6B���v��r�r7F�fRr�rr���������FW�D6��FV�B�B�uw7��7F��Rr�t��r�����������6Ɩ6�������f��FW$6B�v��s�&V�FW$���Ӱ�67&����V�D6���B��������6��7BW6VD6G2������Wr6WB����F�G����G���G��6FVv�'���Ӱ�4DTt�$�U2�f��FW"�2��W6VD6G2��6�VFW2�2�B���f�$V6��6B����6��7B����F�7V�V�B�7&VFTV�V�V�B�vF�br�������6�74��R�v6B����r��f��FW$6B���6B�B�r7F�fRr�rr���������W$�D���G�6B�6���G�B�6B���6B�V����������6Ɩ6�������f��FW$6B�6B�C�&V�FW$���Ӱ�67&����V�D6���B�����ғ��Р�gV�7F���&V�FW%G�Ɨ7B����6��7BƗ7B�F�7V�V�B�vWDV�V�V�D'��B�wG�Ɨ7Br���6��7Bf��FW&VB�vWDf��FW&VEG�������b�f��FW&VB��V�wF�������Ɨ7B���W$�D��� ��F�b6�73�&V�G��7FFR#��F�b6�73�&V�G�֖6��#�	�:���F�c��F�b6�73�&V�G��FW�B#�G�B�t'&�G&�6�6��rG��֖W6�HV7Rr�t��G&�67F���2F��2���F�r����F�c���F�c���&WGW&㰢Р�Ɨ7B���W$�D���rs��f��FW&VB�f�$V6��G�����6��7B6B�4DTt�$�U2�f��B�2��2�B���G��6FVv�'����4DTt�$�U5�uӰ�6��7B�FV��F�7V�V�B�7&VFTV�V�V�B�vF�br����FV��6�74��R�wG�֗FV�s���FV����W$�D��� ��F�b6�73�'G�֖6��"7G��S�&&6�w&�V�C�G�G��G�R���v��6��Rr�w&v&�3B��rÓB��R�r�w&v&�#3��c��c���R�w�#�G�6B�6�����F�c��F�b6�73�'G�֖�f�#��F�b6�73�'G����R#�G�G��FW67���F�c��F�b6�73�'G���WF#�G�B�6B���6B�V��+rG�f�DFFR�G��FFR����F�c���F�c��F�b6�73�'G����V�BG�G��G�R���v��6��Rr�w�2r�v�Vrw�#�G�G��G�R���v��6��Rr�r�r�~(�"w�G�f�B�G����V�B����F�c��'WGF��6�73�'G��FV�WFR"��6Ɩ6��&FV�WFUG&�67F���G�G��GҒ#�)�S��'WGF�����Ɨ7B�V�D6���B��FVғ��ғ��Р���)H)H)H4U%d�4Rt�$�U")H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H ��b�w6W'f�6Uv�&�W"r���f�vF�"���v��F�r�FDWfV�DƗ7FV�W"�v��Br��������f�vF�"�6W'f�6Uv�&�W"�&Vv�7FW"�w7r�2r��6F6�������ғ��ғ��Р���)H)H)H��B)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H)H ���FB6��RFF�bV�G���b�G&�67F���2��V�wF�������6��7B��r��WrFFR����6��7B����r�vWDgV�ŖV"����6��7B����r�vWD���F�����6��7B6��R�����C��G�S�v��6��Rr���V�C�S��FW63�uw��w&�G�V�R�6�'�r�6FVv�'��w6�'�r�FFS��WrFFR�������F��4�7G&��r�������C�"�G�S�vW�V�6Rr���V�C�#�FW63�t7���7��&V�Br�6FVv�'��v���Rr�FFS��WrFFR�����"��F��4�7G&��r�������C�2�G�S�vW�V�6Rr���V�C�3C�FW63�t&�VG&��r�6FVv�'��vf��Br�FFS��WrFFR�����R��F��4�7G&��r�������C�B�G�S�vW�V�6Rr���V�C����FW63�tWF�'W2�'W272r�6FVv�'��wG&�7�'Br�FFS��WrFFR�����b��F��4�7G&��r�������C�R�G�S�vW�V�6Rr���V�C�SR�FW63�tFV���&�7�r�6FVv�'��v�V�F�r�FFS��WrFFR��������F��4�7G&��r�������C�b�G�S�vW�V�6Rr���V�C���FW63�t�WFfƗ��7�F�g�r�6FVv�'��vgV�r�FFS��WrFFR�������F��4�7G&��r�����Ӱ�G&�67F���2�6��S��6fR����Р�&V�FW$�������V�FW"�W�����V�B��W@�F�7V�V�B�vWDV�V�V�D'��B�v��V�D��WBr��FDWfV�DƗ7FV�W"�v�W�F�v�r�R�����b�R�W����tV�FW"r�F�7V�V�B�vWDV�V�V�D'��B�vFW64��WBr��f�7W2����ғ��F�7V�V�B�vWDV�V�V�D'��B�vFW64��WBr��FDWfV�DƗ7FV�W"�v�W�F�v�r�R�����b�R�W����tV�FW"r�FEG&�67F��ₓ��ғ����67&�C���&�G�����F���
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    .empty-icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-text { font-size: 14px; }
+
+    /* FAB */
+    .fab {
+      position: fixed;
+      bottom: 24px;
+      right: 50%;
+      transform: translateX(50%);
+      max-width: 480px;
+      width: calc(100% - 32px);
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(99,102,241,0.4);
+      transition: all 0.2s;
+      z-index: 100;
+    }
+    .fab:hover { background: #4f46e5; transform: translateX(50%) translateY(-2px); }
+    .fab:active { transform: translateX(50%) translateY(0); }
+
+    /* MODAL */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      background: var(--card);
+      border-radius: 24px 24px 0 0;
+      padding: 24px 20px 36px;
+      width: 100%;
+      max-width: 480px;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .modal-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 99px;
+      margin: 0 auto 20px;
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* TYPE TOGGLE */
+    .type-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .type-btn {
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      background: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .type-btn.income.active { background: rgba(34,197,94,0.15); border-color: var(--green); color: var(--green); }
+    .type-btn.expense.active { background: rgba(239,68,68,0.15); border-color: var(--red); color: var(--red); }
+
+    /* FORM */
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .form-input {
+      width: 100%;
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--accent); }
+    .form-input::placeholder { color: var(--muted); }
+    select.form-input { cursor: pointer; }
+
+    /* CATEGORY GRID */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .cat-option {
+      background: var(--card2);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-option.selected { border-color: var(--accent); background: rgba(99,102,241,0.15); }
+    .cat-option-icon { font-size: 22px; margin-bottom: 4px; }
+    .cat-option-name { font-size: 10px; color: var(--muted); }
+    .cat-option.selected .cat-option-name { color: var(--accent); }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .submit-btn:hover { background: #4f46e5; }
+
+    /* CHART */
+    .chart-wrap {
+      padding: 0 16px 16px;
+    }
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 80px;
+      background: var(--card);
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+    .bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      min-height: 2px;
+      transition: height 0.5s ease;
+    }
+    .bar.income-bar { background: var(--green); opacity: 0.7; }
+    .bar.expense-bar { background: var(--red); opacity: 0.7; }
+    .bar-label { font-size: 9px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <span class="app-title" id="appTitle">💰 Tracker Wydatków</span>
+    <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
+  </div>
+  <div class="month-nav">
+    <button class="month-btn" onclick="changeMonth(-1)">‹</button>
+    <span class="month-label" id="monthLabel"></span>
+    <button class="month-btn" onclick="changeMonth(1)">›</button>
+  </div>
+</header>
+
+<div class="cards">
+  <div class="card main">
+    <div>
+      <div class="card-label" id="balanceLabel">Saldo / Balance</div>
+      <div class="card-amount" id="balanceAmount">0,00 zł</div>
+    </div>
+    <div class="balance-icon">💳</div>
+  </div>
+  <div class="card">
+    <div class="card-label" id="incomeLabel">Przychody</div>
+    <div class="small-card-amount income" id="incomeAmount">0,00 zł</div>
+  </div>
+  <div class="card">
+    <div class="card-label" id="expenseLabel">Wydatki</div>
+    <div class="small-card-amount expense" id="expenseAmount">0,00 zł</div>
+  </div>
+  <div class="card">
+    <div class="card-label" id="txLabel">Transakcje</div>
+    <div class="small-card-amount" id="txCount">0</div>
+  </div>
+</div>
+
+<div class="progress-wrap" id="progressWrap" style="display:none">
+  <div class="progress-label">
+    <span id="progressLabel">Wydatki vs Przychody</span>
+    <span id="progressPct">0%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="chart-wrap" id="chartWrap" style="display:none">
+  <div class="chart-bars" id="chartBars"></div>
+</div>
+
+<div class="section-title" id="categoriesTitle">Kategorie / Categories</div>
+<div class="categories-scroll" id="categoryFilter"></div>
+
+<div class="section-title" id="txTitle">Ostatnie transakcje</div>
+<div class="transactions" id="txList"></div>
+
+<button class="fab" onclick="openModal()" id="fabBtn">
+  <span style="font-size:20px">+</span>
+  <span id="fabText">Dodaj transakcję</span>
+</button>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modalTitle">Nowa transakcja</div>
+
+    <div class="type-toggle">
+      <button class="type-btn expense active" id="btnExpense" onclick="setType('expense')">
+        📉 <span id="expenseBtnText">Wydatek</span>
+      </button>
+      <button class="type-btn income" id="btnIncome" onclick="setType('income')">
+        📈 <span id="incomeBtnText">Przychód</span>
+      </button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" id="amountLabel">Kwota (zł)</label>
+      <input class="form-input" type="number" id="amountInput" placeholder="0.00" step="0.01" min="0" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" id="descLabel">Opis</label>
+      <input class="form-input" type="text" id="descInput" placeholder="np. Biedronka, Wynajem..." />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" id="catLabel">Kategoria</label>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+
+    <button class="submit-btn" onclick="addTransaction()" id="submitBtn">✓ Dodaj</button>
+  </div>
+</div>
+
+<script>
+  // ─── STATE ───────────────────────────────────────────────
+  let lang = 'pl';
+  let currentMonth = new Date().getMonth();
+  let currentYear = new Date().getFullYear();
+  let selectedType = 'expense';
+  let selectedCat = 'food';
+  let filterCat = 'all';
+
+  const CATEGORIES = [
+    { id: 'food',      icon: '🍔', pl: 'Jedzenie',    en: 'Food' },
+    { id: 'transport', icon: '🚌', pl: 'Transport',   en: 'Transport' },
+    { id: 'home',      icon: '🏠', pl: 'Dom',         en: 'Home' },
+    { id: 'health',    icon: '💊', pl: 'Zdrowie',     en: 'Health' },
+    { id: 'fun',       icon: '🎮', pl: 'Rozrywka',    en: 'Fun' },
+    { id: 'clothes',   icon: '👕', pl: 'Ubrania',     en: 'Clothes' },
+    { id: 'salary',    icon: '💼', pl: 'Praca',       en: 'Salary' },
+    { id: 'other',     icon: '📦', pl: 'Inne',        en: 'Other' },
+  ];
+
+  const MONTHS_PL = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec',
+                     'Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
+  const MONTHS_EN = ['January','February','March','April','May','June',
+                     'July','August','September','October','November','December'];
+
+  // Load from localStorage
+  let transactions = JSON.parse(localStorage.getItem('txData') || '[]');
+
+  // ─── SAVE ─────────────────────────────────────────────────
+  function save() {
+    localStorage.setItem('txData', JSON.stringify(transactions));
+  }
+
+  // ─── LANGUAGE ────────────────────────────────────────────
+  function toggleLang() {
+    lang = lang === 'pl' ? 'en' : 'pl';
+    document.getElementById('langBtn').textContent = lang === 'pl' ? 'EN' : 'PL';
+    renderAll();
+  }
+
+  function t(pl, en) { return lang === 'pl' ? pl : en; }
+
+  // ─── MONTH NAV ───────────────────────────────────────────
+  function changeMonth(dir) {
+    currentMonth += dir;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if (currentMonth < 0)  { currentMonth = 11; currentYear--; }
+    filterCat = 'all';
+    renderAll();
+  }
+
+  function getMonthLabel() {
+    const m = lang === 'pl' ? MONTHS_PL[currentMonth] : MONTHS_EN[currentMonth];
+    return `${m} ${currentYear}`;
+  }
+
+  // ─── FILTER ───────────────────────────────────────────────
+  function getMonthTx() {
+    return transactions.filter(tx => {
+      const d = new Date(tx.date);
+      return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+    });
+  }
+
+  function getFilteredTx() {
+    const monthTx = getMonthTx();
+    if (filterCat === 'all') return monthTx;
+    return monthTx.filter(tx => tx.category === filterCat);
+  }
+
+  // ─── MODAL ────────────────────────────────────────────────
+  function openModal() {
+    document.getElementById('overlay').classList.add('open');
+    renderModal();
+    document.getElementById('amountInput').focus();
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('overlay')) {
+      document.getElementById('overlay').classList.remove('open');
+    }
+  }
+
+  function setType(type) {
+    selectedType = type;
+    document.getElementById('btnExpense').classList.toggle('active', type === 'expense');
+    document.getElementById('btnIncome').classList.toggle('active', type === 'income');
+    renderCatGrid();
+  }
+
+  function renderModal() {
+    document.getElementById('modalTitle').textContent = t('Nowa transakcja', 'New Transaction');
+    document.getElementById('amountLabel').textContent = t('Kwota (zł)', 'Amount (PLN)');
+    document.getElementById('descLabel').textContent = t('Opis', 'Description');
+    document.getElementById('catLabel').textContent = t('Kategoria', 'Category');
+    document.getElementById('expenseBtnText').textContent = t('Wydatek', 'Expense');
+    document.getElementById('incomeBtnText').textContent = t('Przychód', 'Income');
+    document.getElementById('submitBtn').textContent = t('✓ Dodaj', '✓ Add');
+    renderCatGrid();
+  }
+
+  function renderCatGrid() {
+    const grid = document.getElementById('catGrid');
+    grid.innerHTML = '';
+    CATEGORIES.forEach(cat => {
+      const div = document.createElement('div');
+      div.className = 'cat-option' + (selectedCat === cat.id ? ' selected' : '');
+      div.innerHTML = `<div class="cat-option-icon">${cat.icon}</div><div class="cat-option-name">${t(cat.pl, cat.en)}</div>`;
+      div.onclick = () => {
+        selectedCat = cat.id;
+        renderCatGrid();
+      };
+      grid.appendChild(div);
+    });
+  }
+
+  // ─── ADD ──────────────────────────────────────────────────
+  function addTransaction() {
+    const amount = parseFloat(document.getElementById('amountInput').value);
+    const desc = document.getElementById('descInput').value.trim();
+
+    if (!amount || amount <= 0) {
+      document.getElementById('amountInput').focus();
+      return;
+    }
+
+    const cat = CATEGORIES.find(c => c.id === selectedCat);
+    transactions.unshift({
+      id: Date.now(),
+      type: selectedType,
+      amount,
+      desc: desc || cat[lang],
+      category: selectedCat,
+      date: new Date().toISOString()
+    });
+
+    save();
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('amountInput').value = '';
+    document.getElementById('descInput').value = '';
+    renderAll();
+  }
+
+  // ─── DELETE ───────────────────────────────────────────────
+  function deleteTransaction(id) {
+    transactions = transactions.filter(tx => tx.id !== id);
+    save();
+    renderAll();
+  }
+
+  // ─── FORMAT ───────────────────────────────────────────────
+  function fmt(n) {
+    return n.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' zł';
+  }
+
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString(lang === 'pl' ? 'pl-PL' : 'en-GB', { day: 'numeric', month: 'short' });
+  }
+
+  // ─── RENDER ALL ───────────────────────────────────────────
+  function renderAll() {
+    // Header
+    document.getElementById('appTitle').textContent = t('💰 Tracker Wydatków', '💰 Expense Tracker');
+    document.getElementById('monthLabel').textContent = getMonthLabel();
+    document.getElementById('fabText').textContent = t('Dodaj transakcję', 'Add transaction');
+    document.getElementById('categoriesTitle').textContent = t('Kategorie', 'Categories');
+    document.getElementById('txTitle').textContent = t('Ostatnie transakcje', 'Recent transactions');
+    document.getElementById('balanceLabel').textContent = t('Saldo', 'Balance');
+    document.getElementById('incomeLabel').textContent = t('Przychody', 'Income');
+    document.getElementById('expenseLabel').textContent = t('Wydatki', 'Expenses');
+    document.getElementById('txLabel').textContent = t('Transakcje', 'Transactions');
+
+    // Totals
+    const monthTx = getMonthTx();
+    const income = monthTx.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+    const expense = monthTx.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
+    const balance = income - expense;
+
+    document.getElementById('balanceAmount').textContent = fmt(balance);
+    document.getElementById('balanceAmount').style.color = balance >= 0 ? '#a5b4fc' : '#fca5a5';
+    document.getElementById('incomeAmount').textContent = fmt(income);
+    document.getElementById('expenseAmount').textContent = fmt(expense);
+    document.getElementById('txCount').textContent = monthTx.length;
+
+    // Progress bar
+    const pw = document.getElementById('progressWrap');
+    if (income > 0) {
+      pw.style.display = 'block';
+      const pct = Math.min(100, Math.round((expense / income) * 100));
+      const fill = document.getElementById('progressFill');
+      fill.style.width = pct + '%';
+      fill.className = 'progress-fill' + (pct > 90 ? ' danger' : pct > 70 ? ' warning' : '');
+      document.getElementById('progressLabel').textContent = t('Wydatki vs Przychody', 'Expenses vs Income');
+      document.getElementById('progressPct').textContent = pct + '%';
+    } else {
+      pw.style.display = 'none';
+    }
+
+    // Mini chart (last 6 months)
+    renderChart();
+
+    // Category filter pills
+    renderCategoryFilter(monthTx);
+
+    // TX list
+    renderTxList();
+  }
+
+  function renderChart() {
+    const wrap = document.getElementById('chartWrap');
+    const hasAny = transactions.length > 0;
+    wrap.style.display = hasAny ? 'block' : 'none';
+    if (!hasAny) return;
+
+    const bars = document.getElementById('chartBars');
+    bars.innerHTML = '';
+
+    const months = [];
+    for (let i = 5; i >= 0; i--) {
+      let m = currentMonth - i;
+      let y = currentYear;
+      while (m < 0) { m += 12; y--; }
+      months.push({ m, y });
+    }
+
+    const maxVal = months.reduce((max, { m, y }) => {
+      const txs = transactions.filter(tx => {
+        const d = new Date(tx.date);
+        return d.getMonth() === m && d.getFullYear() === y;
+      });
+      const inc = txs.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+      const exp = txs.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
+      return Math.max(max, inc, exp);
+    }, 1);
+
+    months.forEach(({ m, y }) => {
+      const txs = transactions.filter(tx => {
+        const d = new Date(tx.date);
+        return d.getMonth() === m && d.getFullYear() === y;
+      });
+      const inc = txs.filter(t => t.type === 'income').reduce((s, t) => s + t.amount, 0);
+      const exp = txs.filter(t => t.type === 'expense').reduce((s, t) => s + t.amount, 0);
+      const mLabels = lang === 'pl' ? MONTHS_PL : MONTHS_EN;
+      const label = mLabels[m].slice(0, 3);
+
+      const group = document.createElement('div');
+      group.className = 'bar-group';
+      group.innerHTML = `
+        <div class="bar income-bar" style="height:${Math.round((inc/maxVal)*50)}px"></div>
+        <div class="bar expense-bar" style="height:${Math.round((exp/maxVal)*50)}px"></div>
+        <div class="bar-label">${label}</div>
+      `;
+      bars.appendChild(group);
+    });
+  }
+
+  function renderCategoryFilter(monthTx) {
+    const scroll = document.getElementById('categoryFilter');
+    scroll.innerHTML = '';
+
+    const allPill = document.createElement('div');
+    allPill.className = 'cat-pill' + (filterCat === 'all' ? ' active' : '');
+    allPill.textContent = t('Wszystkie', 'All');
+    allPill.onclick = () => { filterCat = 'all'; renderAll(); };
+    scroll.appendChild(allPill);
+
+    const usedCats = [...new Set(monthTx.map(tx => tx.category))];
+    CATEGORIES.filter(c => usedCats.includes(c.id)).forEach(cat => {
+      const pill = document.createElement('div');
+      pill.className = 'cat-pill' + (filterCat === cat.id ? ' active' : '');
+      pill.innerHTML = `${cat.icon} ${t(cat.pl, cat.en)}`;
+      pill.onclick = () => { filterCat = cat.id; renderAll(); };
+      scroll.appendChild(pill);
+    });
+  }
+
+  function renderTxList() {
+    const list = document.getElementById('txList');
+    const filtered = getFilteredTx();
+
+    if (filtered.length === 0) {
+      list.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">📭</div>
+          <div class="empty-text">${t('Brak transakcji w tym miesiącu', 'No transactions this month')}</div>
+        </div>`;
+      return;
+    }
+
+    list.innerHTML = '';
+    filtered.forEach(tx => {
+      const cat = CATEGORIES.find(c => c.id === tx.category) || CATEGORIES[7];
+      const item = document.createElement('div');
+      item.className = 'tx-item';
+      item.innerHTML = `
+        <div class="tx-icon" style="background:${tx.type === 'income' ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)'}">${cat.icon}</div>
+        <div class="tx-info">
+          <div class="tx-name">${tx.desc}</div>
+          <div class="tx-meta">${t(cat.pl, cat.en)} · ${fmtDate(tx.date)}</div>
+        </div>
+        <div class="tx-amount ${tx.type === 'income' ? 'pos' : 'neg'}">${tx.type === 'income' ? '+' : '−'}${fmt(tx.amount)}</div>
+        <button class="tx-delete" onclick="deleteTransaction(${tx.id})">✕</button>
+      `;
+      list.appendChild(item);
+    });
+  }
+
+  // ─── SERVICE WORKER ───────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  // ─── INIT ─────────────────────────────────────────────────
+  // Add sample data if empty
+  if (transactions.length === 0) {
+    const now = new Date();
+    const y = now.getFullYear();
+    const m = now.getMonth();
+    const sample = [
+      { id: 1, type: 'income',  amount: 5800, desc: 'Wynagrodzenie / Salary',  category: 'salary',    date: new Date(y, m, 1).toISOString() },
+      { id: 2, type: 'expense', amount: 1200, desc: 'Czynsz / Rent',           category: 'home',      date: new Date(y, m, 2).toISOString() },
+      { id: 3, type: 'expense', amount: 340,  desc: 'Biedronka',               category: 'food',      date: new Date(y, m, 5).toISOString() },
+      { id: 4, type: 'expense', amount: 89,   desc: 'Autobus / Bus pass',      category: 'transport', date: new Date(y, m, 6).toISOString() },
+      { id: 5, type: 'expense', amount: 55,   desc: 'Apteka / Pharmacy',       category: 'health',    date: new Date(y, m, 9).toISOString() },
+      { id: 6, type: 'expense', amount: 180,  desc: 'Netflix + Spotify',       category: 'fun',       date: new Date(y, m, 10).toISOString() },
+    ];
+    transactions = sample;
+    save();
+  }
+
+  renderAll();
+
+  // Enter key on amount input
+  document.getElementById('amountInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('descInput').focus();
+  });
+  document.getElementById('descInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addTransaction();
+  });
+</script>
+</body>
+</html>
+
